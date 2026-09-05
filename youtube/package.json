@@ -1,0 +1,16 @@
+{
+  "name": "cloud-youtube-prep",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Record and encode Cloud demo footage for YouTube.",
+  "scripts": {
+    "record": "node scripts/record_cloud_demo.mjs",
+    "compose": "bash scripts/compose_cloud_demo.sh",
+    "encode": "bash scripts/encode_youtube.sh",
+    "test": "bash scripts/test_youtube_encode.sh"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.55.0"
+  }
+}

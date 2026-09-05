@@ -1,0 +1,6 @@
+node_modules/
+youtube/out/
+youtube/inbox/*
+!youtube/inbox/.gitkeep
+*.log
+.DS_Store
