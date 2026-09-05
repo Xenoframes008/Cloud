@@ -38,10 +38,10 @@ draw_card() {
   ffmpeg -y -f lavfi -i "color=c=0b1220:s=1920x1080:d=${duration}:r=30" \
     -f lavfi -i "anullsrc=channel_layout=stereo:sample_rate=48000" \
     -filter_complex \
-    "[0:v]drawbox=x=0:y=470:w=1920:h=4:color=6ea8fe@0.85:t=fill,\
-drawtext=fontfile=${FONT_REG}:text='${eyebrow}':fontsize=28:fontcolor=9fb0d0:x=(w-text_w)/2:y=360,\
-drawtext=fontfile=${FONT_BOLD}:text='${title}':fontsize=96:fontcolor=e8eefc:x=(w-text_w)/2:y=400,\
-drawtext=fontfile=${FONT_REG}:text='${subtitle}':fontsize=32:fontcolor=6ea8fe:x=(w-text_w)/2:y=530,\
+    "[0:v]drawbox=x=0:y=520:w=1920:h=4:color=6ea8fe@0.85:t=fill,\
+drawtext=fontfile=${FONT_REG}:text='${eyebrow}':fontsize=28:fontcolor=9fb0d0:x=(w-text_w)/2:y=330,\
+drawtext=fontfile=${FONT_BOLD}:text='${title}':fontsize=88:fontcolor=e8eefc:x=(w-text_w)/2:y=390,\
+drawtext=fontfile=${FONT_REG}:text='${subtitle}':fontsize=32:fontcolor=6ea8fe:x=(w-text_w)/2:y=555,\
 fade=t=in:st=0:d=0.4,fade=t=out:st=$(awk "BEGIN{print ${duration}-0.4}"):d=0.4,format=yuv420p[v]" \
     -map "[v]" -map 1:a -shortest \
     -c:v libx264 -profile:v high -pix_fmt yuv420p -r 30 \
@@ -102,8 +102,8 @@ bash "$ROOT/scripts/encode_youtube.sh" "$SHORTS_SRC" "$OUT/exports/cloud_starter
 
 # Thumbnail from a mid-footage frame plus title treatment.
 THUMB_FRAME="$OUT/cards/thumb_frame.png"
-ffmpeg -y -ss 2.5 -i "$FOOTAGE" -frames:v 1 "$THUMB_FRAME"
-ffmpeg -y -i "$THUMB_FRAME" \
+ffmpeg -y -ss 2.5 -i "$FOOTAGE" -frames:v 1 -update 1 "$THUMB_FRAME"
+ffmpeg -y -i "$THUMB_FRAME" -frames:v 1 -update 1 \
   -vf "scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720,\
 drawbox=x=0:y=470:w=1280:h=250:color=0b1220@0.72:t=fill,\
 drawtext=fontfile=${FONT_BOLD}:text='CLOUD':fontsize=92:fontcolor=e8eefc:x=48:y=500,\

@@ -23,7 +23,7 @@ This export is 1920×1080 H.264 + AAC, +faststart, Rec.709, loudness-normalized 
 Chapters
 00:00 Title
 00:03 Live app
-00: end card
+00:21 End card
 
 #Cloud #NodeJS #Express #WebDev #API #XenoSGames
 ```

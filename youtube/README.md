@@ -32,6 +32,7 @@ The Cloud app must be running (from the starter-app branch or a local checkout):
 ```bash
 cd youtube
 npm install
+npx playwright install ffmpeg
 CLOUD_URL=http://127.0.0.1:3000 npm run record
 npm run compose
 npm test
