@@ -1,0 +1,11 @@
+{
+  "name": "Cloud",
+  "install": "npm install",
+  "terminals": [
+    {
+      "name": "web",
+      "command": "npm start"
+    }
+  ],
+  "ports": [3000]
+}
